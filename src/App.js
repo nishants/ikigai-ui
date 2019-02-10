@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import Home from 'pages/home'
+import Routes from 'Routes';
 import {attemptAutoLogin} from 'auth/scatter_actions'
 
 class App extends Component{
@@ -10,12 +10,9 @@ class App extends Component{
     }
 
     render(){
-        return (
-            <Home/>
-        );
+      return <Routes/>;
     }
 }
 
-alert(`${process.env.ENV_FLAG}`);
 
 export default connect()(App);
