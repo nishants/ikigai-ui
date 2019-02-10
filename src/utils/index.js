@@ -8,3 +8,5 @@ export const notifyError   = (value = 'Error !', duration = DEFAULT_NOTIFICATION
 export const notifyInfo    = (value, duration = DEFAULT_NOTIFICATION_DURATION) => message.info(value, duration);
 export const notifySuccess = (value = 'Success !', duration = DEFAULT_NOTIFICATION_DURATION) => message.success(value, duration);
 export const notifyWarning = (value = 'Warning !', duration = DEFAULT_NOTIFICATION_DURATION) => message.warning(value, duration);
+
+export const classIf = (...conditions) => conditions.filter(c => c.if).map(c=> c.className).join(' ');

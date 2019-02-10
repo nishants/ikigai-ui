@@ -1,9 +1,10 @@
 @import 'styles/_base.scss';
 
-.link-button{
-  background-color: $theme_dark_color;
-  color: $white_text_color;
-  border-radius: $button_radius;
+.theme-input{
+  background-color: $light_white;
+  color: $black_text_color;
+
+  border-radius: $input_radius;
   border: 1px solid $light_border_color;
   height: $form_element_height;
   display: inline-block;
@@ -11,18 +12,12 @@
   min-width: $large_button_min_width;
   text-align: center;
   line-height: $form_element_height;
-  box-shadow: $button_shadow;
+  box-shadow: $input_shadow;
   transition: $default_transition;
   font-weight: $bold_text_weight;
+  outline: none;
 
-  &:visited,
-  &:link,
-  &:hover,
-  &:active{
-    color: $white_text_color;
-  }
-
-  &:hover{
-    box-shadow: $button_elevated_shadow;
+  :focus{
+    background-color: white;
   }
 }

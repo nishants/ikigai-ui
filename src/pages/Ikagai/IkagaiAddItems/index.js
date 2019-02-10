@@ -2,6 +2,7 @@ import React from 'react';
 import './IkagaiAddItems.scss';
 import LinkButton from 'components/Form/LinkButton';
 import {withRouter} from 'react-router';
+import AddItems from 'components/ikagai/AddItems';
 
 const ikagaiHelper = {
   steps: [{
@@ -39,6 +40,7 @@ class IkagaiIntro extends React.Component{
           <h1>
             <span className='headline'>Ikagai</span>
           </h1>
+          <AddItems/>
           <LinkButton to={nextRoute} label='Next'/>
         </section>
     );

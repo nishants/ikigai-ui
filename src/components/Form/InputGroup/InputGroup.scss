@@ -1,0 +1,11 @@
+@import 'styles/_base.scss';
+
+.theme-input-group{
+  display: block;
+  line-height: $form_element_height;
+  padding: 20px;
+
+  .theme-form-element:not(:last-child){
+    margin-right: 10px;
+  }
+}
