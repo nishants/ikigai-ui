@@ -2,3 +2,10 @@
 @import "variables";
 @import "material";
 @import "typography";
+
+ul.undo-list{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}

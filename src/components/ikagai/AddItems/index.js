@@ -16,6 +16,12 @@ const AddItems = () => (
         <li>
           <Love label='learning'/>
         </li>
+        <li>
+          <Love label='learning'/>
+        </li>
+        <li>
+          <Love label='learning'/>
+        </li>
       </ul>
     </div>
 );

@@ -1,0 +1,20 @@
+@import 'styles/_base.scss';
+
+$image_height: 300px;
+$text_width: 500px;
+
+#ikagai-intro{
+  > img{
+    display: block;
+    height: $image_height;
+    margin: auto;
+  }
+
+  >p {
+    font-size: $medium_font_size;
+    max-width: $text_width;
+    text-align: center;
+    margin: auto;
+    padding: 20px 0;
+  }
+}

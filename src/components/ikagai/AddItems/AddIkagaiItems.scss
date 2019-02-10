@@ -1,7 +1,11 @@
 @import 'styles/_base.scss';
 
-#app-footer{
+.add-ikagai-items{
   text-align: center;
-  background-color: $light_grey;
-  padding: 10px;
+
+  > ul {
+    > li {
+      margin-bottom: 10px;
+    }
+  }
 }

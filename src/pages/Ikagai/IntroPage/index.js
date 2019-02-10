@@ -2,11 +2,12 @@ import React from 'react';
 import './IkagaiIntro.scss';
 import IntroImage from './IntroImage.svg'
 import LinkButton from 'components/Form/LinkButton';
+import Heading from 'components/ikagai/Heading';
 
 const IkagaiIntro = props => (
     <section id='ikagai-intro'>
       <h1>
-        <span className='headline'>Ikagai</span>
+        <Heading underline={true}/>
       </h1>
       <img src={IntroImage} alt='Ikigai'/>
       <p>
