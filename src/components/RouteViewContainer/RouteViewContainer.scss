@@ -1,0 +1,6 @@
+@import 'styles/_base.scss';
+
+.route-view-container{
+  padding:  $view_container_padding;
+  padding-top:  $view_container_padding+$top_bar_height;
+}
