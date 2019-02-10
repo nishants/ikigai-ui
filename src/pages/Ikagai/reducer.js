@@ -13,9 +13,6 @@ const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case IKAGAI_ACTIONS.ADD_ITEM:
-      console.log(action)
-      console.log(state.addedItems)
-      console.log(state.addedItems[action.payload.type])
       const newList = state.addedItems[action.payload.type].concat(action.payload.item);
 
       return {
@@ -23,6 +20,17 @@ const reducer = (state = INITIAL_STATE, action) => {
         addedItems: {
             ...state.addedItems,
             [action.payload.type]: newList
+        }
+      };
+    case IKAGAI_ACTIONS.REMOVE_ITEM:
+      const filteredList = state.addedItems[action.payload.type].filter(item => action.payload.item.label !== item.label);
+      window.state = state;
+      window.action = action;
+      return {
+        ...state,
+        addedItems: {
+            ...state.addedItems,
+            [action.payload.type]: filteredList
         }
       };
 

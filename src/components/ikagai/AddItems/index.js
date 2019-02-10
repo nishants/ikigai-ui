@@ -20,11 +20,12 @@ class AddItems extends React.Component{
   };
 
   addItem = () => {
-    this.props.addItem(this.state.input)
+    this.props.addItem(this.state.input);
+    this.setState({input: ''});
   };
 
   render(){
-    const {items, addItem} = this.props;
+    const {items, removeItem} = this.props;
 
     return (
         <div className='add-ikagai-items'>
@@ -36,7 +37,7 @@ class AddItems extends React.Component{
           <ul className='undo-list'>
             {items.map(item => (
                 <li key={item.label}>
-                  <Love label={item.label}/>
+                  <Love label={item.label} remove={() => removeItem(item)}/>
                 </li>
             ))}
           </ul>

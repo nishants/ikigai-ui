@@ -9,7 +9,7 @@ import Heading from 'components/ikagai/Heading';
 import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 
-import {addItem} from 'pages/Ikagai/actions';
+import {addItem, removeItem} from 'pages/Ikagai/actions';
 
 class AddItemsPage extends React.Component{
   constructor(props){
@@ -26,6 +26,13 @@ class AddItemsPage extends React.Component{
     }));
   };
 
+  removeItem = item => {
+    this.props.dispatch(removeItem({
+      type: this.props.currentStep.id,
+      item
+    }));
+  };
+
   render(){
     const
         {currentStep, itemsAdded} = this.props,
@@ -38,7 +45,7 @@ class AddItemsPage extends React.Component{
             <Heading/>
           </h1>
           <Progress progress={currentStep.progress}/>
-          <AddItems items={itemsAdded} addItem={this.addItem}/>
+          <AddItems items={itemsAdded} addItem={this.addItem} removeItem={this.removeItem}/>
           <LinkButton to={nextRoute} label='Next'/>
         </section>
     );
