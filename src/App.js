@@ -5,6 +5,7 @@ import Routes from 'Routes';
 import {attemptAutoLogin} from 'auth/scatter_actions'
 import RouteViewContainer from 'components/RouteViewContainer';
 import TopBar from 'components/TopBar';
+import Footer from 'components/Footer';
 
 class App extends Component{
     componentDidMount() {
@@ -17,6 +18,7 @@ class App extends Component{
         <RouteViewContainer>
           <Routes/>
         </RouteViewContainer>
+        <Footer/>
       </>
     }
 }

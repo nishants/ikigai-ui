@@ -5,6 +5,7 @@
   height: $top_bar_height;
   position: fixed;
   width: 100vw;
+  z-index: $top_bar_zindex;
   box-shadow: $top_bar_shadow;
   text-align: center;
 

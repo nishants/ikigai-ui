@@ -3,4 +3,8 @@
 .route-view-container{
   padding:  $view_container_padding;
   padding-top:  $view_container_padding+$top_bar_height;
+  font-family: $theme_font;
+  background-color: $light_white;
+  min-height: 100vh;
+  text-align: center;
 }

@@ -1,0 +1,28 @@
+@import 'styles/_base.scss';
+
+.link-button{
+  background-color: $theme_dark_color;
+  color: $white_text_color;
+  border-radius: $button_radius;
+  border: 1px solid $light_border_color;
+  height: $button_height;
+  display: inline-block;
+
+  min-width: $button_min_width;
+  text-align: center;
+  line-height: $button_height;
+  box-shadow: $button_shadow;
+  transition: $default_transition;
+  font-weight: $bold_text_weight;
+
+  &:visited,
+  &:link,
+  &:hover,
+  &:active{
+    color: $white_text_color;
+  }
+
+  &:hover{
+    box-shadow: $button_elevated_shadow;
+  }
+}
