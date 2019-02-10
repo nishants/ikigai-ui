@@ -1,0 +1,39 @@
+@import 'styles/_base.scss';
+
+.ikigai-love{
+  width: $ikigai_types_min_width;
+  margin: auto;
+  line-height: $ikigai_types_height;
+  height: $ikigai_types_height;
+  border: 1px solid $light_border_color;
+  text-align: left;
+  border-radius: 2px;
+  overflow: hidden;
+
+  .ikigai-type-icon,
+  .ikigai-type-remove-item{
+    width: $ikigai_types_icon_width;
+    display: inline-block;
+    text-align: center;
+    line-height: inherit;
+    height: 100%;
+  }
+
+  .ikigai-type-icon{
+    color: $love_red;
+  }
+
+  label{
+    display: inline-block;
+    width: calc(100% - 2 * #{$ikigai_types_icon_width});
+    text-transform: uppercase;
+    font-weight: $bold_text_weight;
+  }
+
+  .ikigai-type-remove-item{
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+    background-color: $light_grey;
+  }
+}
