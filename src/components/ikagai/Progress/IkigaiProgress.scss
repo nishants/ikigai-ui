@@ -1,0 +1,18 @@
+@import 'styles/_base.scss';
+
+$progess_height: 5px;
+
+.ikigai-progress{
+  border: 1px solid $theme_dark_color;
+  height: $progess_height;
+  border-radius: $progess_height;
+
+  overflow: hidden;
+  > div{
+    position: relative;
+    left: -100%;
+    transition: $prgoress_bar_transition;
+    height: $progess_height;
+    background: $theme_dark_color;
+  }
+}
