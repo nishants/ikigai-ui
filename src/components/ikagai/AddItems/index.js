@@ -5,25 +5,44 @@ import Input from 'components/Form/Input';
 import InputGroup from 'components/Form/InputGroup';
 import Love from 'components/ikagai/types/Love';
 
-const AddItems = () => (
-    <div className='add-ikagai-items'>
-      <InputGroup>
-        <Input placeholder='Type here'></Input>
-        <Button label='Add'/>
-      </InputGroup>
+class AddItems extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      input: ''
+    }
+  }
 
-      <ul className='undo-list'>
-        <li>
-          <Love label='learning'/>
-        </li>
-        <li>
-          <Love label='learning'/>
-        </li>
-        <li>
-          <Love label='learning'/>
-        </li>
-      </ul>
-    </div>
-);
+  onInputChange = (e) => {
+    this.setState({
+      input: e.target.value
+    });
+  };
+
+  addItem = () => {
+    this.props.addItem(this.state.input)
+  };
+
+  render(){
+    const {items, addItem} = this.props;
+
+    return (
+        <div className='add-ikagai-items'>
+          <InputGroup>
+            <Input placeholder='Type here' onChange={this.onInputChange} value={this.state.input}></Input>
+            <Button onClick={this.addItem} label='Add'/>
+          </InputGroup>
+
+          <ul className='undo-list'>
+            {items.map(item => (
+                <li key={item.label}>
+                  <Love label={item.label}/>
+                </li>
+            ))}
+          </ul>
+        </div>
+    );
+  }
+};
 
 export default AddItems;

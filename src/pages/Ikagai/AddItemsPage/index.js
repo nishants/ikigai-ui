@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import './IkagaiAddItems.scss';
 import LinkButton from 'components/Form/LinkButton';
 import {withRouter} from 'react-router';
@@ -7,16 +9,26 @@ import Heading from 'components/ikagai/Heading';
 import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 
+import {addItem} from 'pages/Ikagai/actions';
+
 class AddItemsPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      nextStepType: ''
+      itemsAdded: []
     }
   }
+
+  addItem = label => {
+    this.props.dispatch(addItem({
+      type: this.props.currentStep.id,
+      item: {label}
+    }));
+  };
+
   render(){
     const
-        currentStep = StepTransitionHelper.getStep({id: this.props.match.params.id, type: 'add'}),
+        {currentStep, itemsAdded} = this.props,
         nextStep = StepTransitionHelper.nextStepOf(currentStep),
         nextRoute = StepTransitionHelper.routeFor(nextStep);
 
@@ -26,11 +38,22 @@ class AddItemsPage extends React.Component{
             <Heading/>
           </h1>
           <Progress progress={currentStep.progress}/>
-          <AddItems/>
+          <AddItems items={itemsAdded} addItem={this.addItem}/>
           <LinkButton to={nextRoute} label='Next'/>
         </section>
     );
   }
 }
 
-export default withRouter(AddItemsPage);
+const mapStateToProps = ({ikagai}, props) => {
+  const
+      currentStep = StepTransitionHelper.getStep({id: props.match.params.id, type: 'add'}),
+      itemsAdded = ikagai.addedItems[currentStep.id];
+
+  return {
+    currentStep,
+    itemsAdded
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(AddItemsPage));
