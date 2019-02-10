@@ -12,6 +12,7 @@ import {
 import UserWallet from "../../components/user_wallet";
 import SendTokens from "../../components/send_tokens";
 import UserAccount from "../../components/user_account";
+import style from "./home.scss";
 
 class Home extends Component{
     constructor(props){
