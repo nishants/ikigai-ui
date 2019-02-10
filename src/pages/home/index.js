@@ -7,7 +7,7 @@ import {
     fetchWallet,
     logout,
     sendTokens
-} from '../../scatter/scatter_actions';
+} from '../../auth/scatter_actions';
 
 import UserWallet from "../../components/user_wallet";
 import SendTokens from "../../components/send_tokens";

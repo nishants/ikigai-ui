@@ -1,4 +1,4 @@
-import {SCATTER_ACTIONS} from './scatter_actions';
+import {SCATTER_ACTIONS} from 'auth/scatter_actions';
 
 const INITIAL_STATE = {
     connected       : false,
