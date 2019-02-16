@@ -4,12 +4,9 @@ import {withRouter} from 'react-router';
 
 import './IkagaiMapItems.scss';
 
-import Heading from 'components/ikagai/Heading';
-import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
-import Love from 'components/ikagai/types/Love';
 import LinkButton from 'components/Form/LinkButton';
-import {addMapping, removeMapping} from 'pages/Ikagai/actions';
+import {addMapping, removeMapping, setProgress} from 'pages/Ikagai/actions';
 import IkigaiType from 'components/ikagai/types';
 import Mapping from 'components/ikagai/types/Mapping';
 
@@ -23,6 +20,13 @@ class MapItemsPage extends React.Component{
       droppingLabel    : null,
       draggingOverLabel: null
     };
+    this.props.dispatch(setProgress(props.currentStep.progress));
+  }
+
+  componentDidUpdate(prevProps){
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.props.dispatch(setProgress(this.props.currentStep.progress));
+    }
   }
 
   addMapping = ({sourceLabel, targetLabel}) => {
@@ -131,10 +135,6 @@ class MapItemsPage extends React.Component{
 
     return (
         <section id='ikagai-map-items'>
-          <h1>
-            <Heading/>
-          </h1>
-          <Progress progress={currentStep.progress}/>
           <label className='map-items-heading'>
             Drag and drop item form left onto item on right if anything relates to other
           </label>

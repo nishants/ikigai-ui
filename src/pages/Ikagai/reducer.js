@@ -8,6 +8,7 @@ const hacks = {
 };
 
 const INITIAL_STATE = {
+  progress: 0,
   addedItems: {
     love  : hacks.love,
     skills: hacks.skills,
@@ -23,6 +24,12 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case IKAGAI_ACTIONS.SET_PROGRESS:
+      return {
+        ...state,
+        progress: action.payload.progress
+      };
 
     case IKAGAI_ACTIONS.ADD_ITEM:
       const newList = state.addedItems[action.payload.type].concat(action.payload.item);

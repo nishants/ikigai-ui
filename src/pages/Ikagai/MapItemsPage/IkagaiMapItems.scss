@@ -40,4 +40,9 @@
       }
     }
   }
+  .drag-and-drop-mappings{
+    > ul {
+      @extend .undo-list;
+    }
+  }
 }

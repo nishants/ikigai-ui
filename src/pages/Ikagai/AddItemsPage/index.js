@@ -5,11 +5,9 @@ import './IkagaiAddItems.scss';
 import LinkButton from 'components/Form/LinkButton';
 import {withRouter} from 'react-router';
 import AddItems from 'components/ikagai/AddItems';
-import Heading from 'components/ikagai/Heading';
-import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 
-import {addItem, removeItem} from 'pages/Ikagai/actions';
+import {addItem, removeItem, setProgress} from 'pages/Ikagai/actions';
 
 class AddItemsPage extends React.Component{
   constructor(props){
@@ -17,6 +15,13 @@ class AddItemsPage extends React.Component{
     this.state = {
       itemsAdded: []
     };
+    this.props.dispatch(setProgress(props.currentStep.progress));
+  }
+
+  componentDidUpdate(prevProps){
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.props.dispatch(setProgress(this.props.currentStep.progress));
+    }
   }
 
   addItem = label => {
@@ -41,10 +46,6 @@ class AddItemsPage extends React.Component{
 
     return (
         <section id='ikagai-add-items'>
-          <h1>
-            <Heading/>
-          </h1>
-          <Progress progress={currentStep.progress}/>
           <AddItems type={currentStep.id} items={itemsAdded} addItem={this.addItem} removeItem={this.removeItem}/>
           <LinkButton to={nextRoute} label='Next'/>
         </section>
