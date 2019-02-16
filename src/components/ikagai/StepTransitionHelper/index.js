@@ -16,19 +16,19 @@ const StepTransitionHelper = {
     type: 'add',
     progress: 50,
   },{
-    id: 'love-skills',
+    id: 'love_skills',
     type: 'map',
     dragItem: 'love',
     dropItem: 'skills',
     progress: 60,
   },{
-    id: 'money-cause',
+    id: 'money_cause',
     type: 'map',
     dragItem: 'money',
     dropItem: 'cause',
     progress: 70,
   },{
-    id: 'skills-money',
+    id: 'skills_money',
     type: 'map',
     dragItem: 'skills',
     dropItem: 'money',

@@ -9,6 +9,7 @@ import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 import Love from 'components/ikagai/types/Love';
 import LinkButton from 'components/Form/LinkButton';
+import {addMapping} from 'pages/Ikagai/actions';
 
 import {classIf} from 'utils';
 
@@ -18,21 +19,19 @@ class MapItemsPage extends React.Component{
     this.state = {
       draggingLabel    : null,
       droppingLabel    : null,
-      draggingOverLabel: null,
-      mappings         : []
+      draggingOverLabel: null
     };
   }
 
   addMapping = ({sourceLabel, targetLabel}) => {
-    this.setState((state, props) => {
-      const
-          mappingExists = state.mappings.find(m => m.source.label === sourceLabel && m.target.label === targetLabel),
-          mapping = mappingExists ? null :  {
-            source: props.draggableSources.find(i => i.label === sourceLabel),
-            target: props.droppableTargets.find(i => i.label === targetLabel)
-          };
-      return mapping ? {mappings : state.mappings.concat(mapping)} : null;
-    })
+    const
+        {draggableSources, droppableTargets, mappings} = this.props,
+        mappingExists = mappings.find(m => m.source.label === sourceLabel && m.target.label === targetLabel),
+        mapping = mappingExists ? null :  {
+          source: draggableSources.find(i => i.label === sourceLabel),
+          target: droppableTargets.find(i => i.label === targetLabel)
+        };
+    mapping && this.props.dispatch(addMapping({type: this.props.currentStep.id, mapping}));
   };
 
   draggingSource = (event, item) => {
@@ -118,8 +117,7 @@ class MapItemsPage extends React.Component{
 
   render(){
     const
-        {currentStep, droppableTargets, draggableSources, nextRoute} = this.props,
-        {mappings} = this.state,
+        {currentStep, droppableTargets, draggableSources, nextRoute, mappings} = this.props,
         {getDraggableItem, getDroppableItem, getMappings} = this;
 
     return (
@@ -153,7 +151,7 @@ class MapItemsPage extends React.Component{
           </div>
 
           {
-            mappings.length > 2 && <LinkButton to={nextRoute} label='Next'/>
+            mappings.length > 1 && <LinkButton to={nextRoute} label='Next'/>
           }
         </section>
     );
@@ -168,7 +166,8 @@ const mapStateToProps = ({ikagai}, props) => {
       dragLabel   = StepTransitionHelper.itemLabels[currentStep.dragItem],
       dropLabel   = StepTransitionHelper.itemLabels[currentStep.dropItem],
       nextStep = StepTransitionHelper.nextStepOf(currentStep),
-      nextRoute = StepTransitionHelper.routeFor(nextStep);
+      nextRoute = StepTransitionHelper.routeFor(nextStep),
+      mappings = ikagai.itemsMapped[currentStep.id];
 
   return {
     currentStep,
@@ -176,7 +175,8 @@ const mapStateToProps = ({ikagai}, props) => {
     droppableTargets,
     dragLabel,
     dropLabel,
-    nextRoute
+    nextRoute,
+    mappings
   };
 };
 
