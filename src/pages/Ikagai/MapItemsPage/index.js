@@ -22,40 +22,6 @@ class MapItemsPage extends React.Component{
     };
   }
 
-  getDraggableItem = item => {
-    const
-        isBeingDragged = this.state.draggingLabel === item.label,
-        isBeingDropped = this.state.droppingLabel === item.label,
-        classNames = classIf(
-          {if: isBeingDragged, className: 'dragging-item'},
-          {if: isBeingDropped, className: 'dropping-item dropping-item'}
-        );
-
-    return (
-        <li
-            onDragStart={(e) => this.onDragStart(e, item)}
-            onDragEnd={(e) => this.onDragEnd()}
-            className={classNames}
-            draggable
-            key={item.label}>
-          <Love label={item.label}/>
-        </li>
-    );
-  };
-
-  onDragEnd = () => {
-    this.setState((state) => {
-      state.draggingOverLabel && this.addMapping({
-        sourceLabel : state.draggingLabel,
-        targetLabel : state.draggingOverLabel
-      });
-      return {
-        draggingLabel: null,
-        draggingOverLabel: null
-      }
-    });
-  };
-
   addMapping = ({sourceLabel, targetLabel}) => {
     this.setState((state, props) => {
       const
@@ -68,30 +34,58 @@ class MapItemsPage extends React.Component{
     })
   };
 
-  onDragStart = (e, item) => {
+  draggingSource = (event, item) => {
+    event.dataTransfer.setData("label", item.label);
     this.setState({draggingLabel: item.label});
   };
 
-  onDragEnter = (e, item) => {
+  draggingEnded = () => {
+    this.setState({
+          draggingLabel: null,
+          draggingOverLabel: null
+        }
+    );
+  };
+
+  draggingOnTarget = (event, item) => {
     this.setState({draggingOverLabel: item.label});
+    event.preventDefault();
   };
 
-  onDragExit = (e, item) => {
-    // TODO NOT WORKING
-    // this.setState(state => ({
-    //   draggingOverLabel: null
-    //   // draggingOverLabel: state.draggingOverLabel === item.label ? null : state.draggingOverLabel
-    // }));
+  droppedOnTarget = (event, item) => {
+    this.addMapping({
+      sourceLabel : event.dataTransfer.getData("label"),
+      targetLabel : item.label
+    });
+
+    this.setState({
+      draggingLabel: null,
+      draggingOverLabel: null
+    });
   };
 
-  onDrop = (e, item) => {
-    // TODO not working
-    // alert(`${this.state.draggingOverLabel} dropped on ${item.label}`);
-    // this.setState((state, prop) => {
-    //   // const mappingExists = state.mappings
-    // });
-  };
+  getDraggableItem = item => {
+    const
+        isBeingDragged = this.state.draggingLabel === item.label,
+        isBeingDropped = this.state.droppingLabel === item.label,
+        classNames = classIf(
+            {if: isBeingDragged, className: 'dragging-item'},
+            {if: isBeingDropped, className: 'dropping-item dropping-item'}
+        );
 
+    return (
+        <li
+            className={classNames}
+            key={item.label}>
+          <span
+              draggable
+              onDragEnd={(e) => this.draggingEnded()}
+              onDragStart={(e) => this.draggingSource(e, item)}>
+            <Love label={item.label}/>
+          </span>
+        </li>
+    );
+  };
 
   getDroppableItem = item => {
     const
@@ -102,12 +96,13 @@ class MapItemsPage extends React.Component{
 
     return (
         <li
-            onDragEnter={(e) => this.onDragEnter(e, item)}
-            onDragExit={(e) => this.onDragExit(e, item)}
-            onDrop={(e) => this.onDrop(e, item)}
             className={classNames}
             key={item.label}>
-          <Love label={item.label}/>
+          <span
+              onDrop={(e) => this.droppedOnTarget(e, item)}
+              onDragOver={(e) => this.draggingOnTarget(e, item)}>
+            <Love label={item.label}/>
+          </span>
         </li>
     );
   };

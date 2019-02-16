@@ -22,7 +22,10 @@
     .drag-to-map-container{
       > ul {
         > li {
-          cursor: grab;
+          [draggable]{
+            cursor: grab;
+            display: inline-block;
+          }
         }
         > li.dragging-item {
           cursor: grabbing;
