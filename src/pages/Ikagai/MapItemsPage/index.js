@@ -8,6 +8,7 @@ import Heading from 'components/ikagai/Heading';
 import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 import Love from 'components/ikagai/types/Love';
+import LinkButton from 'components/Form/LinkButton';
 
 import {classIf} from 'utils';
 
@@ -117,7 +118,7 @@ class MapItemsPage extends React.Component{
 
   render(){
     const
-        {currentStep, droppableTargets, draggableSources} = this.props,
+        {currentStep, droppableTargets, draggableSources, nextRoute} = this.props,
         {mappings} = this.state,
         {getDraggableItem, getDroppableItem, getMappings} = this;
 
@@ -151,6 +152,9 @@ class MapItemsPage extends React.Component{
             </ul>
           </div>
 
+          {
+            mappings.length > 2 && <LinkButton to={nextRoute} label='Next'/>
+          }
         </section>
     );
   }
@@ -162,14 +166,17 @@ const mapStateToProps = ({ikagai}, props) => {
       draggableSources   = ikagai.addedItems[currentStep.dragItem],
       droppableTargets   = ikagai.addedItems[currentStep.dropItem],
       dragLabel   = StepTransitionHelper.itemLabels[currentStep.dragItem],
-      dropLabel   = StepTransitionHelper.itemLabels[currentStep.dropItem];
+      dropLabel   = StepTransitionHelper.itemLabels[currentStep.dropItem],
+      nextStep = StepTransitionHelper.nextStepOf(currentStep),
+      nextRoute = StepTransitionHelper.routeFor(nextStep);
 
   return {
     currentStep,
     draggableSources,
     droppableTargets,
     dragLabel,
-    dropLabel
+    dropLabel,
+    nextRoute
   };
 };
 
