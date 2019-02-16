@@ -16,7 +16,7 @@ class AddItemsPage extends React.Component{
     super(props);
     this.state = {
       itemsAdded: []
-    }
+    };
   }
 
   addItem = label => {

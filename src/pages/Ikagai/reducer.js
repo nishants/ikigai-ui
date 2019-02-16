@@ -1,11 +1,21 @@
 import {IKAGAI_ACTIONS} from './actions';
 
+const hacks = {
+  love: [{label: 'teaching'}, {label: 'creating'}],
+  skills: [{label: 'explaining complex ideas'}, {label: 'designing'}]
+};
+
 const INITIAL_STATE = {
   addedItems: {
-    love: [],
-    skills: [],
-    money: [],
-    cause: [],
+    love  : hacks.love,
+    skills: hacks.skills,
+    money : [],
+    cause : [],
+  },
+  itemsMapped: {
+    love_skills: [],
+    money_cause: [],
+    skills_money: [],
   }
 };
 

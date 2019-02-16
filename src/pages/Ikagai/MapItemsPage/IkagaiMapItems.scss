@@ -1,0 +1,30 @@
+@import 'styles/_base.scss';
+
+#ikagai-map-items{
+  .map-items-heading{
+
+  }
+  .drag-and-drop-to-map-container{
+    @extend .resize-container;
+
+    .drag-to-map-container,
+    .drop-to-map-container{
+      width: 50%;
+      float: left;
+      > ul {
+        @extend .undo-list;
+        > li {
+          padding: 10px;
+          cursor: grab;
+        }
+
+        > li.dragging-item {
+          cursor: grabbing;
+        }
+      }
+    }
+
+    .drag-to-map-container{}
+    .drop-to-map-container{}
+  }
+}

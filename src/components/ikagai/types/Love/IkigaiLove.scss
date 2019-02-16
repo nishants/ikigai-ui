@@ -28,6 +28,7 @@
     width: calc(100% - 2 * #{$ikigai_types_icon_width});
     text-transform: uppercase;
     font-weight: $bold_text_weight;
+    cursor: inherit;
   }
 
   .ikigai-type-remove-item{
