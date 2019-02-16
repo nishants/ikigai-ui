@@ -1,9 +1,9 @@
 import React from 'react';
-import './IkigaiLove.scss';
+import './IkigaiMoney.scss';
 
-const Love = props => (
-    <div className='ikigai-type-item love'>
-      <span className='ikigai-type-icon fa fa-heart'></span>
+const Skill = props => (
+    <div className='ikigai-type-item money'>
+      <span className='ikigai-type-icon fa fa-money-bill-alt'></span>
       <label>{props.label}</label>
       {
         props.remove && <span className='ikigai-type-remove-item fa fa-times' onClick={props.remove}></span>
@@ -11,4 +11,4 @@ const Love = props => (
     </div>
 );
 
-export default Love;
+export default Skill;

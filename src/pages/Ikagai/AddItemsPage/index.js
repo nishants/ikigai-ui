@@ -45,7 +45,7 @@ class AddItemsPage extends React.Component{
             <Heading/>
           </h1>
           <Progress progress={currentStep.progress}/>
-          <AddItems items={itemsAdded} addItem={this.addItem} removeItem={this.removeItem}/>
+          <AddItems type={currentStep.id} items={itemsAdded} addItem={this.addItem} removeItem={this.removeItem}/>
           <LinkButton to={nextRoute} label='Next'/>
         </section>
     );

@@ -3,7 +3,7 @@ import './AddIkagaiItems.scss';
 import Button from 'components/Form/Button';
 import Input from 'components/Form/Input';
 import InputGroup from 'components/Form/InputGroup';
-import Love from 'components/ikagai/types/Love';
+import IkigaiType from 'components/ikagai/types';
 
 class AddItems extends React.Component{
   constructor(props){
@@ -25,7 +25,8 @@ class AddItems extends React.Component{
   };
 
   render(){
-    const {items, removeItem} = this.props;
+    const {items, removeItem, type} = this.props;
+    const TypeComponent = IkigaiType(type);
 
     return (
         <div className='add-ikagai-items'>
@@ -37,7 +38,7 @@ class AddItems extends React.Component{
           <ul className='undo-list'>
             {items.map(item => (
                 <li key={item.label}>
-                  <Love label={item.label} remove={() => removeItem(item)}/>
+                  <TypeComponent label={item.label} remove={() => removeItem(item)}/>
                 </li>
             ))}
           </ul>

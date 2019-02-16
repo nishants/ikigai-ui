@@ -10,6 +10,7 @@ import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 import Love from 'components/ikagai/types/Love';
 import LinkButton from 'components/Form/LinkButton';
 import {addMapping, removeMapping} from 'pages/Ikagai/actions';
+import IkigaiType from 'components/ikagai/types';
 
 import {classIf} from 'utils';
 
@@ -71,7 +72,8 @@ class MapItemsPage extends React.Component{
         classNames = classIf(
             {if: isBeingDragged, className: 'dragging-item'},
             {if: isBeingDropped, className: 'dropping-item dropping-item'}
-        );
+        ),
+        TypeComponent = IkigaiType(this.props.currentStep.dragItem);
 
     return (
         <li
@@ -81,7 +83,7 @@ class MapItemsPage extends React.Component{
               draggable
               onDragEnd={(e) => this.draggingEnded()}
               onDragStart={(e) => this.draggingSource(e, item)}>
-            <Love label={item.label}/>
+            <TypeComponent label={item.label}/>
           </span>
         </li>
     );
@@ -92,7 +94,8 @@ class MapItemsPage extends React.Component{
         isBeingDraggedOver = this.state.draggingOverLabel === item.label,
         classNames = classIf(
             {if: isBeingDraggedOver, className: 'being-dragged-over'}
-        );
+        ),
+        TypeComponent = IkigaiType(this.props.currentStep.dropItem);
 
     return (
         <li
@@ -101,7 +104,7 @@ class MapItemsPage extends React.Component{
           <span
               onDrop={(e) => this.droppedOnTarget(e, item)}
               onDragOver={(e) => this.draggingOnTarget(e, item)}>
-            <Love label={item.label}/>
+            <TypeComponent label={item.label}/>
           </span>
         </li>
     );
