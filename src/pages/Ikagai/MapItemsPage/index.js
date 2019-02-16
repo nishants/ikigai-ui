@@ -9,7 +9,7 @@ import Progress from 'components/ikagai/Progress';
 import StepTransitionHelper from 'components/ikagai/StepTransitionHelper';
 import Love from 'components/ikagai/types/Love';
 import LinkButton from 'components/Form/LinkButton';
-import {addMapping} from 'pages/Ikagai/actions';
+import {addMapping, removeMapping} from 'pages/Ikagai/actions';
 
 import {classIf} from 'utils';
 
@@ -107,10 +107,16 @@ class MapItemsPage extends React.Component{
     );
   };
 
+  removeMapping = mapping => this.props.dispatch(removeMapping({
+    type: this.props.currentStep.id,
+    mapping
+  }));
+
   getMappings = mapping => {
     return (
         <li key={`${mapping.source.label}-${mapping.target.label}`}>
           {`${mapping.source.label}-${mapping.target.label}`}
+          <button onClick={() => this.removeMapping(mapping)}>remove</button>
         </li>
     );
   };

@@ -48,13 +48,25 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case IKAGAI_ACTIONS.REMOVE_ITEM:
       const filteredList = state.addedItems[action.payload.type].filter(item => action.payload.item.label !== item.label);
-      window.state = state;
-      window.action = action;
       return {
         ...state,
         addedItems: {
             ...state.addedItems,
             [action.payload.type]: filteredList
+        }
+      };
+
+    case IKAGAI_ACTIONS.REMOVE_MAPPING:
+
+      const
+          mappingToRemove = action.payload.mapping,
+          isSameMapping = mapping => mapping.source.label !== mappingToRemove.source.label || mapping.target.label !== mappingToRemove.target.label,
+          filteredMappingList = state.itemsMapped[action.payload.type].filter(isSameMapping);
+      return {
+        ...state,
+        itemsMapped: {
+            ...state.itemsMapped,
+            [action.payload.type]: filteredMappingList
         }
       };
 
