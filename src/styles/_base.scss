@@ -15,3 +15,11 @@ ul.undo-list{
   display:table;
   clear:both;
 }
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform:    $value;
+  -ms-transform:     $value;
+  -o-transform:      $value;
+  transform:         $value;
+}

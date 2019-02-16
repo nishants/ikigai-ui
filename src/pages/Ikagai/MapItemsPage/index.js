@@ -11,6 +11,7 @@ import Love from 'components/ikagai/types/Love';
 import LinkButton from 'components/Form/LinkButton';
 import {addMapping, removeMapping} from 'pages/Ikagai/actions';
 import IkigaiType from 'components/ikagai/types';
+import Mapping from 'components/ikagai/types/Mapping';
 
 import {classIf} from 'utils';
 
@@ -118,8 +119,7 @@ class MapItemsPage extends React.Component{
   getMappings = mapping => {
     return (
         <li key={`${mapping.source.label}-${mapping.target.label}`}>
-          {`${mapping.source.label}-${mapping.target.label}`}
-          <button onClick={() => this.removeMapping(mapping)}>remove</button>
+          <Mapping mapping={mapping} type={this.props.currentStep} onRemove={() => this.removeMapping(mapping)}/>
         </li>
     );
   };

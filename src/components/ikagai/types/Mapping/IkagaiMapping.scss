@@ -1,0 +1,59 @@
+@import 'styles/_base.scss';
+
+$remove_button_width: 50px;
+
+.ikagai-mapping-container{
+  @extend .resize-container;
+  position: relative;
+  width: 300px;
+  margin: 10px auto;
+  text-align: left;
+  background-color: $light_grey;
+  border: 1px solid $light_border_color;
+
+  .ikagai-mapping-items{
+    float: left;
+    width: calc(100% - #{$remove_button_width});
+    background-color: white;
+    padding: 10px;
+    .ikagai-mapping-item{
+      margin-bottom: 10px;
+      > i {
+        display: block;
+        float: left;
+        padding: 5px;
+      }
+      > label{
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: $bold_text_weight;
+        cursor: inherit;
+      }
+      &.love > i{
+        color: $love_red
+      }
+      &.skills > i{
+        color: $star_yellow
+      }
+      &.money > i{
+        color: $money_green
+      }
+      &.cause > i{
+        color: $earth_blue
+      }
+    }
+  }
+
+  .ikigai-type-remove-item{
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    right: 0;
+    @include transform(translateY(-50%));
+    width: $remove_button_width;
+    text-align: center;
+    display: block;
+    color: $love_red;
+  }
+
+}
