@@ -6,7 +6,8 @@ $progess_height: 5px;
   border: 1px solid $theme_dark_color;
   height: $progess_height;
   border-radius: $progess_height;
-
+  max-width: $centered_content_width;
+  margin : auto;
   overflow: hidden;
   > div{
     position: relative;

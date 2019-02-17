@@ -3,7 +3,7 @@
 .theme-input-group{
   display: block;
   line-height: $form_element_height;
-  padding: 20px;
+  margin: 20px auto;
 
   .theme-form-element:not(:last-child){
     margin-right: 10px;

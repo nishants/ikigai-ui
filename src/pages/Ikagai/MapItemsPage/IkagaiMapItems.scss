@@ -2,7 +2,10 @@
 
 #ikagai-map-items{
   .map-items-heading{
-
+    color: $theme_dark_color;
+    font-weight:$bold_text_weight;
+    margin: 20px 0 40px;
+    display: inline-block;
   }
   .drag-and-drop-to-map-container{
     @extend .resize-container;
@@ -11,17 +14,34 @@
     .drop-to-map-container{
       width: 50%;
       float: left;
+      .column-info-heading{
+        color: $theme_dark_color;
+        padding-bottom: 3px;
+        border-bottom: 1px solid $theme_dark_color;
+        width: $add_items_width;
+        display: inline-block;
+        margin: 10px 0;
+        font-weight: $bold_text_weight;
+      }
       > ul {
         @extend .undo-list;
         > li {
           padding: 10px;
+          width: $add_items_width;
         }
       }
     }
 
     .drag-to-map-container{
+      .column-info-heading{
+        float: right;
+        width: $add_items_width;
+        margin-right: 40px;
+      }
       > ul {
         > li {
+          float: right;
+          margin-right: 50px;
           [draggable]{
             cursor: grab;
             display: inline-block;
@@ -33,9 +53,18 @@
       }
     }
     .drop-to-map-container{
+      .column-info-heading{
+        float: left;
+        width: $add_items_width;
+        margin-left: 60px;
+      }
       > ul {
-        > li.being-dragged-over {
-          outline: 1px solid red;
+        > li {
+          float: left;
+          margin-left: 50px;
+          &.being-dragged-over {
+            outline: 1px solid red;
+          }
         }
       }
     }
@@ -44,5 +73,9 @@
     > ul {
       @extend .undo-list;
     }
+  }
+
+  .link-button{
+    width: $add_items_width;
   }
 }

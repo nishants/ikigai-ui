@@ -1,11 +1,25 @@
 @import 'styles/_base.scss';
 
 .add-ikagai-items{
+  width: $centered_content_width;
+  margin: auto;
   text-align: center;
 
+  .theme-input-group{
+    input{
+      width: $add_items_width;
+    }
+    button{
+      width: calc(100% - #{$add_items_width + 10px});
+    }
+  }
   > ul {
+    padding-right: calc(100% - #{$add_items_width}) !important;
     > li {
       margin-bottom: 10px;
     }
+  }
+  .link-button{
+
   }
 }

@@ -40,14 +40,15 @@ class AddItemsPage extends React.Component{
 
   render(){
     const
-        {currentStep, itemsAdded} = this.props,
+        {currentStep, itemsAdded, sectionHeading} = this.props,
         nextStep = StepTransitionHelper.nextStepOf(currentStep),
         nextRoute = StepTransitionHelper.routeFor(nextStep);
 
     return (
         <section id='ikagai-add-items'>
+          <div className='section-heading'>{sectionHeading}</div>
           <AddItems type={currentStep.id} items={itemsAdded} addItem={this.addItem} removeItem={this.removeItem}/>
-          <LinkButton to={nextRoute} label='Next'/>
+          {itemsAdded.length > 2 &&  <LinkButton to={nextRoute} label='Next'/>}
         </section>
     );
   }
@@ -56,11 +57,18 @@ class AddItemsPage extends React.Component{
 const mapStateToProps = ({ikagai}, props) => {
   const
       currentStep = StepTransitionHelper.getStep({id: props.match.params.id, type: 'add'}),
-      itemsAdded = ikagai.addedItems[currentStep.id];
+      itemsAdded = ikagai.addedItems[currentStep.id],
+      sectionHeading = {
+        love  : 'Add things you love',
+        skills: 'Add things you are good at',
+        money : 'Add things that you can do to make money',
+        cause : 'Add things that you can do for world',
+      }[currentStep.id];
 
   return {
     currentStep,
-    itemsAdded
+    itemsAdded,
+    sectionHeading
   };
 };
 

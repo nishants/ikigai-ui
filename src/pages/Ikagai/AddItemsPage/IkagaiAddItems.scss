@@ -3,19 +3,15 @@
 $image_height: 300px;
 $text_width: 500px;
 
-#ikagai-intro{
-
-  > img{
-    display: block;
-    height: $image_height;
-    margin: auto;
+#ikagai-add-items{
+  .section-heading{
+    color: $theme_dark_color;
+    font-weight:$bold_text_weight;
+    margin: 20px 0 40px;
+    display: inline-block;
   }
 
-  >p {
-    font-size: $medium_font_size;
-    max-width: $text_width;
-    text-align: center;
-    margin: auto;
-    padding: 20px 0;
+  .link-button{
+    width: $centered_content_width;
   }
 }

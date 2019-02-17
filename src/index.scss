@@ -16,3 +16,10 @@ code {
 * {
   box-sizing: border-box;
 }
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder{
+  color: pink;
+}

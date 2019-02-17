@@ -5,7 +5,7 @@ $remove_button_width: 50px;
 .ikagai-mapping-container{
   @extend .resize-container;
   position: relative;
-  width: 300px;
+  width: $add_items_width;
   margin: 10px auto;
   text-align: left;
   background-color: $light_grey;

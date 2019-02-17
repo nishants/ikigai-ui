@@ -130,7 +130,7 @@ class MapItemsPage extends React.Component{
 
   render(){
     const
-        {currentStep, droppableTargets, draggableSources, nextRoute, mappings} = this.props,
+        {droppableTargets, draggableSources, nextRoute, mappings, dropLabel, dragLabel} = this.props,
         {getDraggableItem, getDroppableItem, getMappings} = this;
 
     return (
@@ -141,12 +141,14 @@ class MapItemsPage extends React.Component{
 
           <div className='drag-and-drop-to-map-container'>
             <div className='drag-to-map-container'>
+              <label className='column-info-heading'>{dragLabel}</label>
               <ul>
                 {draggableSources.map(getDraggableItem)}
               </ul>
             </div>
 
             <div className='drop-to-map-container'>
+              <label className='column-info-heading'>{dropLabel}</label>
               <ul>
                 {droppableTargets.map(getDroppableItem)}
               </ul>
@@ -172,11 +174,17 @@ const mapStateToProps = ({ikagai}, props) => {
       currentStep = StepTransitionHelper.getStep({id: props.match.params.id, type: 'map'}),
       draggableSources   = ikagai.addedItems[currentStep.dragItem],
       droppableTargets   = ikagai.addedItems[currentStep.dropItem],
-      dragLabel   = StepTransitionHelper.itemLabels[currentStep.dragItem],
-      dropLabel   = StepTransitionHelper.itemLabels[currentStep.dropItem],
       nextStep = StepTransitionHelper.nextStepOf(currentStep),
       nextRoute = StepTransitionHelper.routeFor(nextStep),
-      mappings = ikagai.itemsMapped[currentStep.id];
+      mappings = ikagai.itemsMapped[currentStep.id],
+      labels = {
+        love  : 'Things I love',
+        skills: 'Things I am good at',
+        money : 'Things I can do to make money',
+        cause : 'Things I can contribute to world with'
+      },
+      dropLabel = labels[currentStep.dropItem],
+      dragLabel = labels[currentStep.dragItem];
 
   return {
     currentStep,
