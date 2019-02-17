@@ -1,0 +1,34 @@
+@import 'styles/_base.scss';
+
+#ikagai-result{
+  padding-top: 20px;
+  .ikagai-chart{
+    height: 100vmin;
+    width : 100vmin;
+    margin: auto;
+    @extend .resize-container;
+
+    .ikagai-chart-cell{
+      float: left;
+      height: 33%;
+      width : 33%;
+      border: 1px solid $light_border_color;
+      font-weight: $light_text_weight;
+
+      &.mission,
+      &.vocation,
+      &.profession,
+      &.passion{
+        font-weight: $bold_text_weight;
+        background-color: white;
+      }
+
+      &.purpose{
+        font-weight: $bold_text_weight;
+        color: $white_text_color;
+        background-color: $theme_dark_color;
+      }
+
+    }
+  }
+}

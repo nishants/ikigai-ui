@@ -8,6 +8,7 @@ import {Route} from "react-router-dom";
 import IntroPage from "./IntroPage";
 import AddItemsPage from "./AddItemsPage";
 import MapItemsPage from "./MapItemsPage";
+import ResultPage from "./ResultPage";
 
 
 const IkagaiHome = ({progress}) => (
@@ -19,6 +20,7 @@ const IkagaiHome = ({progress}) => (
       <Route exact path="/ikagai/intro" component={IntroPage}/>
       <Route exact path="/ikagai/add/:id" component={AddItemsPage}/>
       <Route exact path="/ikagai/map/:id" component={MapItemsPage}/>
+      <Route exact path="/ikagai/report" component={ResultPage}/>
     </>
 );
 

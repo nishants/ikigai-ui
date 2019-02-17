@@ -38,7 +38,7 @@ const StepTransitionHelper = {
 
   getStep :({id, type}) => StepTransitionHelper.steps[StepTransitionHelper.steps.findIndex(a => a.id === id && a.type === type)],
   nextStepOf: ({id, type}) => StepTransitionHelper.steps[1 + StepTransitionHelper.steps.findIndex(a => a.id === id && a.type === type)],
-  routeFor: step => step ? `/ikagai/${step.type}/${step.id}` : '/show-results',
+  routeFor: step => step ? `/ikagai/${step.type}/${step.id}` : '/ikagai/report',
   itemLabels : {
     love: 'Things I love',
     skills: 'Things I am good at',
