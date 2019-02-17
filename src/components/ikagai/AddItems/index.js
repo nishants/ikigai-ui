@@ -31,12 +31,12 @@ class AddItems extends React.Component{
     return (
         <div className='add-ikagai-items'>
           <InputGroup>
-            <Input placeholder='Type here' onChange={this.onInputChange} value={this.state.input}></Input>
-            <Button onClick={this.addItem} label='Add'/>
+            <Input placeholder='Type here' onChange={this.onInputChange} value={this.state.input} ></Input>
+            <Button onClick={this.addItem} label='Add' disabled={this.state.input.length === 0}/>
           </InputGroup>
 
           <ul className='undo-list'>
-            {items.map(item => (
+            {[...items].reverse().map(item => (
                 <li key={item.label}>
                   <TypeComponent label={item.label} remove={() => removeItem(item)}/>
                 </li>
