@@ -19,6 +19,7 @@ const INITIAL_STATE = {
     love_skills : [{source: hacks.love[0]  , target: hacks.skills[0]}, {source: hacks.love[1]  ,target: hacks.skills[1]}],
     money_cause : [{source: hacks.money[0] , target: hacks.cause[0] }, {source: hacks.money[1] ,target: hacks.cause[1]}],
     skills_money: [{source: hacks.skills[0], target: hacks.money[0] }, {source: hacks.skills[1],target: hacks.money[1]}],
+    cause_love:   [{source: hacks.cause[0], target: hacks.love[0] }, {source: hacks.cause[1],target: hacks.love[1]}],
   }
 };
 
